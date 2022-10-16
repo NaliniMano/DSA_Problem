@@ -6,6 +6,7 @@ import org.junit.Test;
 public class ShuffleArray_Leet {
 	
 
+	
 	/*
 	 * Question here !!
 	 * 
@@ -15,6 +16,7 @@ public class ShuffleArray_Leet {
 	public void example1() {
     int[] nums= {2,5,1,3,4,7};
     int n=3;
+    Assert.assertArrayEquals(doshufflearray(nums,n), new int[]{2,3,5,4,1,7});
     doshufflearray(nums,n);
 	}
 
@@ -25,6 +27,8 @@ public class ShuffleArray_Leet {
 		int[] nums= {2,5,4,3,7,8,9};
 		int n=4;
 	    doshufflearray(nums,n);
+	    Assert.assertArrayEquals(doshufflearray(nums,n), new int[]{2,7,5,8,4,9,3});
+
 
 	}
 
@@ -33,6 +37,7 @@ public class ShuffleArray_Leet {
 		int[] nums= {1};
 		int n=1;
 	    doshufflearray(nums,n);
+	    Assert.assertArrayEquals(doshufflearray(nums,n),nums);
 
 	}
 
@@ -53,53 +58,47 @@ public class ShuffleArray_Leet {
 	 * 
 	 */
 
-	private void doshufflearray(int[] nums,int n) {
+	private int[] doshufflearray(int[] nums,int n) {
 		// TODO Auto-generated method stub
 		
-		int[] x= new int[n];
-		int[] y=new int[n];
-		int[] output=new int[nums.length];
-	
-		int count=0,m=0,p=0;
-		Arrays.fill(x, 0);
-		Arrays.fill(y,0);
-		
-		if(nums.length<2) {
-		System.out.println("no shuffle");
-	     }else
-	     {
-	    	 for(int i=0;i<nums.length;i++)
-	    	 {
-	    		 if(count<n)
-	    		 {
-	    		x[m]=nums[i];m++;
-	    		 }else
-	    		 {
-	    		y[p]=nums[i];p++;
-	    		 }
-	    		 count++;
-	    	 }
-	    	 
-	    	 int a=0,b=0;
-	    	 for(int j=0;j<output.length;j++)
-	    	 {
-	    		 if(j%2==0)
-	    		 {
-	    		 output[j]=x[a];
-	    		 a++;
-	    		 }else
-	    		 {
-	    		  output[j]=y[b];
-	    		  b++;
-	    		 }
-	    	 }
-	    	 
-	    	 System.out.println(Arrays.toString(output));
-	    	 
-	    	 //System.out.println(Arrays.toString(x));
-	    	 //System.out.println(Arrays.toString(y));
-	     }
-		
-
-}
+	    int[] x= new int[n];
+			int[] y=new int[n];
+			int[] output=new int[nums.length];
+			int count=0,m=0,p=0;
+			Arrays.fill(x, 0);
+			Arrays.fill(y,0);
+			
+			if(nums.length<2)
+			//System.out.println("no shuffle");
+	            return nums;
+		     
+		   
+		    	 for(int i=0;i<nums.length;i++)
+		    	 {
+		    		 if(count<n)
+		    		 {
+		    		x[m]=nums[i];m++;
+		    		 }else
+		    		 {
+		    		y[p]=nums[i];p++;
+		    		 }
+		    		 count++;
+		    	 }
+		    	 
+		    	 int a=0,b=0;
+		    	 for(int j=0;j<output.length;j++)
+		    	 {
+		    		 if(j%2==0)
+		    		 {
+		    		 output[j]=x[a];
+		    		 a++;
+		    		 }else
+		    		 {
+		    		  output[j]=y[b];
+		    		  b++;
+		    		 }
+		    	  }
+		    	
+				return output;
+	        }
 }
