@@ -1,7 +1,6 @@
-package hwprogram;
+
 
 import java.util.Arrays;
-
 import org.junit.Test;
 
 public class ShuffleArray_Leet {
