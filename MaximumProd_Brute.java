@@ -8,19 +8,21 @@ public class MaximumProd_Brute {
 	@Test
 	public void postive_scenario(){
 		int[] nums={3,4,5,2};
-		findindex(nums);
+		Assert.assertEquals(findmaxproduct(nums), 12);
 		}
 
 	
 	@Test
 		public void negative_scenario(){
 		int[] nums={1};
-		findindex(nums);
+		findmaxproduct(nums);
+		Assert.assertEquals(findmaxproduct(nums), 0);
 		}
 	@Test
 		public void edge_scenario(){
 		int[] nums={1,2,1,2};
-		findindex(nums);
+		Assert.assertEquals(findmaxproduct(nums), 1);
+
 
 		}
 
@@ -35,12 +37,13 @@ public class MaximumProd_Brute {
 		***/
 	
 	
-		private void findindex(int[] nums) {
+		private int findmaxproduct(int[] nums) {
 			// TODO Auto-generated method stub
 		 
 			int max=Integer.MIN_VALUE,prod=1;
 			if(nums.length< 2 )  { 
-				System.out.println("No Index");
+				//System.out.println("No I");
+				return 0;
 			}
 				
 			else{
@@ -57,9 +60,9 @@ public class MaximumProd_Brute {
 
 			}
 
-			System.out.println("maxvalue ="+max);
+			//System.out.println("maxvalue ="+max);
+			return max;
 		}
 			
-		
-}
+
 }
