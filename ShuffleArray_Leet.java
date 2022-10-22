@@ -1,12 +1,13 @@
-
+package hwprogram;
 
 import java.util.Arrays;
+
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ShuffleArray_Leet {
 	
 
-	
 	/*
 	 * Question here !!
 	 * 
@@ -16,6 +17,8 @@ public class ShuffleArray_Leet {
 	public void example1() {
     int[] nums= {2,5,1,3,4,7};
     int n=3;
+    shuffle(nums,n);
+    
     Assert.assertArrayEquals(doshufflearray(nums,n), new int[]{2,3,5,4,1,7});
     doshufflearray(nums,n);
 	}
@@ -54,10 +57,44 @@ public class ShuffleArray_Leet {
 	 * 5.  traver throgh the output array
 	 *      add element  of X and Y
 	 * 
+	 * time-complexity
+	 * o[n^2]
 	 * 
+	 *2 pointer
+	 *
+	 *intialize p1=0,p2=n,output array
+	 *loop through until p1 reaches n & p2 reaches arrays length
+	 *alternatively store p1 & p2 in output array
+	 *return the result
+	 *
+	 *time complexity
+	 *o[n/2]
 	 * 
 	 */
-
+	public int[] shuffle(int[] nums, int n) {
+        int p1=0,p2=n,i=0;
+        int[] output=new int[nums.length];
+          while(p1 < n && p2< nums.length)
+        {
+        	
+            output[i]=nums[p1];
+            output[++i]=nums[p2];
+            
+           
+            p1++;
+            p2++;
+            i++;
+        }
+        
+        System.out.println(Arrays.toString(output));
+        
+        return output;
+       
+    }
+	
+	
+	
+	
 	private int[] doshufflearray(int[] nums,int n) {
 		// TODO Auto-generated method stub
 		
@@ -101,4 +138,8 @@ public class ShuffleArray_Leet {
 		    	
 				return output;
 	        }
+	     
+		
+
+
 }
