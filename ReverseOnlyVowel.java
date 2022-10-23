@@ -1,6 +1,8 @@
 package hwprogram;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -13,18 +15,18 @@ public class ReverseOnlyVowel {
 	public void example1()
 	{
 	 String word ="hello";
-
-	 reverseOnlyVowel_twopointer(word);
+	 reverseOnlyVowel(word);
+	// reverseOnlyVowel_twopointer(word);
 	}
-   //Test //Edge
+   @Test //Edge
 	public void example2()
 	{
 	 String word ="leetcode";
-
+	 reverseOnlyVowel(word);
 	 reverseOnlyVowel_twopointer(word);
 	}
 
-	@Test //negative
+	//@Test //negative
 	public void example3()
 	{
 	 String word ="bcde";
@@ -38,39 +40,42 @@ public class ReverseOnlyVowel {
 	
 	/***
 	 * Brute -Force
-	 * loop throuth tge string
-	 * check if the charac is vowel if vowel change it and store in output
-	 * return output
-	 * 
+	 * loop through character of string
+	 * if character Vowel store in string
+	 * add character to list
+	 * iterate the list
+	 * repalce 
 	 * 
 	 * @param word
 	 */
 	private void reverseOnlyVowel(String word) {
 		// TODO Auto-generated method stub
 		StringBuffer output= new StringBuffer(word);
-		output.reverse();
-		word=output.toString();
-	//	word.re
-		/**
-		char[] ch = new char[word.length()];
-		int k=word.length()-1;
-
+		List<Character> li =new ArrayList<Character>();
 		
+		String vowel="";
+		char ch;
 		for(int i=0;i<word.length();i++)
 		{
-			
-			if(isVowel(word.charAt(i)))
+			ch=word.charAt(i);
+			if(isVowel(ch))
 			{
-				ch[k]=word.charAt(i);
+				vowel+=ch;
 			}
-			else
-			{
-				ch[i]=word.charAt(i);
-			}
-			
-			System.out.println(Arrays.toString(ch));
+			li.add(ch);
 		}
-		***/
+		  
+		
+	int j=vowel.length()-1;
+    for(int k=0;k<li.size();k++)
+	   {
+		   
+		  if(isVowel(li.get(k)))
+		  { 
+		   li.set(k,vowel.charAt(j--) ) ;
+		  }
+	   }
+	  System.out.println(li);
 		
 	}
 	
