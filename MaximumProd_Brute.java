@@ -16,6 +16,7 @@ public class MaximumProd_Brute {
 	public void postive_scenario(){
 		int[] nums={3,4,5,2};
 		findmaxproduct_twopointer(nums);
+		findmaxproduct_arraylist(nums);
 		Assert.assertEquals(findmaxproduct(nums), 12);
 		}
 
@@ -66,7 +67,7 @@ public class MaximumProd_Brute {
 				return 0;
 			}
 				
-			else{
+			
 			for(int i=0;i<nums.length;i++)
 			{
 			for(int j=i+1;j<nums.length;j++)
@@ -82,11 +83,49 @@ public class MaximumProd_Brute {
 
 			//System.out.println("maxvalue ="+max);
 			return max;
-		}
+		
 			
 	  			
 		
 }
+		private int findmaxproduct_arraylist(int[] nums) {
+			// TODO Auto-generated method stub
+		    List<Integer> li =new ArrayList<Integer>();
+		    for(int i=0;i<nums.length;i++)
+		    {
+		    	li.add(nums[i]);
+		    }
+		    
+			int max=Integer.MIN_VALUE,prod=1;
+			if(nums.length< 2 )  { 
+				//System.out.println("No I");
+				return 0;
+			}
+			
+			
+			
+			for(int i=0;i<li.size();i++)
+			{
+			for(int j=i+1;j<li.size();j++)
+			 {
+			    prod=(li.get(i)-1)*(li.get(j)-1);
+				if(prod>max)
+				{
+				max=prod;
+				}
+			  }
+
+			}
+
+			
+			return max;
+		
+			
+	  			
+		
+}
+
+		
 		public int findmaxproduct_twopointer(int[] nums)
 		
 		  {
