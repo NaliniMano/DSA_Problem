@@ -16,7 +16,8 @@ public class Subarray_ProdLessthanK {
 		int[] nums= {10,5,2,6};
 		int target=100;
 	   findSubArray(nums,target);
-		findsubarray_sliddingwindow(nums,target);
+	   findsubarray_opti(nums,target);
+		
 	}
 
 	private void findSubArray(int[] nums,int k) {
@@ -39,46 +40,34 @@ public class Subarray_ProdLessthanK {
 		}
 		//System.out.println(count);
 	}
+	/***
+	 * 
+	 * Optimize approach
+	 * Slidding window
+	 * 
+	 * @param nums
+	 * @param k
+	 */
 	
-	public void findsubarray_sliddingwindow(int[] nums,int k)
-	{
-		int prod=1,count=0,left=0,right=0;
-		while(right<nums.length)
-		{
-			prod=prod*nums[right++];
-			while(prod >=k)
-			{
-				//System.out.println("inside");
-				prod/=nums[left++];
-			
-				
-			}
-			if(prod < k) 
-			{
-				count++;
-				System.out.println(left+", "+right);
-				
-			}
-			
-		}
-	 while(right>=nums.length && left < nums.length)
-		{
-			prod=prod*nums[left++];
+public int findsubarray_opti(int[] nums,int k)
+{
+	int counter =0;
+    int start=0;
+    int prod =1;
+
+    for(int i=0;i<nums.length;i++){
+
+        prod*=nums[i];
+        if(prod>=k){
+            while(prod>=k && start<nums.length){
+                prod=prod/nums[start++];
+            }
+        }
+        if(prod<k) counter+=i-start+1;
+    }
+    System.out.println(counter);
+
+    return counter;
+}
 		
-			if(prod < k)
-				{
-				count++;
-				System.out.println(left+", "+right);
-				}
-			else
-			{
-			  prod=1;
-			}
-			
-		}
-		
-		System.out.println(count);
-	//	System.out.println(left+", "+right +"="+prod);
-	}
-	
 }
