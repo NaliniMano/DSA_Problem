@@ -15,7 +15,7 @@ public class Majority_Element_Hash {
 	 */
 	
 	
-	@Test
+	//@Test
 	public void example1()
 	{
 		int[] nums= {3,2,3};
@@ -25,33 +25,30 @@ public class Majority_Element_Hash {
 	@Test
 	public void example2()
 	{
-		int[] nums= {3,2,3,4,4,4};
+		int[] nums= {2,2,1,1,1,2,2};
 		findMajority(nums);
 	}
 
 	/**
-	 * 
+	 * loop through the array element
+	 * add to hashmap Key -->element , Values ->occurrence
+	 * check if the current element value more than length/2 then return the key
 	 * 
 	 * @param nums
 	 */
-	private void findMajority(int[] nums) {
+	private int findMajority(int[] nums) {
 		// TODO Auto-generated method stub
 		   HashMap<Integer,Integer> hmap =new HashMap();
-		   int output=0;
+		  
 	        for(int i=0;i<nums.length;i++)
 	        {
 	            hmap.put(nums[i],hmap.getOrDefault(nums[i],0)+1);
+	            if(hmap.get(nums[i])>nums.length/2) 
+	            	{ System.out.println(nums[i]);
+	            	return nums[i];
+	            	}
 	        }
-	    	      int maxValueInMap = (Collections.max(hmap.values()));
-	    	      
-	    	      for (Entry<Integer, Integer> entry :
-		               hmap.entrySet()) {
-		            if(entry.getValue()==maxValueInMap)
-		            {
-		                output=entry.getKey();
-		            }
-		        }
-	    	      System.out.println(output);
+	        return 0;
 	}
 
 }
