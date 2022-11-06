@@ -1,6 +1,7 @@
 package day7;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -13,6 +14,7 @@ public class SortGvArray {
 	{
 	 int[] nums={5,7,2,9,1,14,12,10,5,3};
 	 doSort(nums);
+	 doSort_optimise(nums);
 	}
 	
 	/*
@@ -46,10 +48,45 @@ public class SortGvArray {
 		first.addAll(middle);
 		System.out.println(first);
 	}
-
-
+/**
+ * Dutch flag algorithm
+ * 
+ * 
+ * @param nums
+ */
 	
-	
+	private void doSort_optimise(int[] input) 
+	{
+		// TODO Auto-generated method stub
+		
+		int low=0,middle=0,high=input.length-1;
+		int temp;
+		while(middle <= high)
+		{
+			
+			if(input[middle]<=3)
+			 {
+			    temp=input[middle];
+			   input[middle]=input[low];
+			   input[low]=temp;
+			   middle++;
+			   low++;
+			 }
+			else if(input[middle]>=4 && input[middle]<=10) 
+			{
+			middle++;
+			}else
+			{
+			 temp =input[middle];
+			 input[middle]=input[high];
+			  input[high]=temp;
+			 high--;
+			}
+		
+	}
+
+		System.out.println("Dutch flag="+Arrays.toString(input));
+	}
 	
 	
 	
