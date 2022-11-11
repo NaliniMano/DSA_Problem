@@ -24,7 +24,16 @@ public class FirstUniqueCharacter {
 		findUniqueChar(s);
 	
 	}
-	
+	/**
+	 * Brute force
+	 * 1. loop through given array
+	 * 2. for current character check first index & last index matches
+	 * 3. match found return first match the character
+	 * 4. 
+	 * 
+	 * Time complexity -> O[n2]
+	 * @param s
+	 */
 
 	private void findUniqueChar(String s) {
 		// TODO Auto-generated method stub
@@ -33,7 +42,7 @@ public class FirstUniqueCharacter {
 			int m =s.indexOf(s.charAt(i));
 			int n =s.lastIndexOf(s.charAt(i));
 		System.out.println(m+ ","+n);
-			if(m >=0 & n==0) {
+			if(m==n) {
 				System.out.println(s.charAt(i));
 				break;
 			}
